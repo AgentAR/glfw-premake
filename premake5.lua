@@ -1,10 +1,11 @@
 project "GLFW"
 	kind "StaticLib"
 	language "C"
+	staticruntime "on"
 	architecture "x86_64"
 
-	targetdir "../bin/%{cfg.buildcfg}"
-	objdir "../obj/%{cfg.buildcfg}"
+	targetdir "../../../bin/%{cfg.buildcfg}"
+	objdir "../../../bin-int/%{cfg.buildcfg}"
 	
 	includedirs { "include/" }
 
@@ -55,7 +56,7 @@ project "GLFW"
 
 	filter "system:windows"
 		systemversion "latest"
-		staticruntime "On"
+		staticruntime "on"
 
 		files
 		{
@@ -77,10 +78,10 @@ project "GLFW"
 			"_CRT_SECURE_NO_WARNINGS"
 		}
 
-	filter "configurations:Debug"
-		runtime "Debug"
-		symbols "on"
-
-	filter "configurations:Release"
-		runtime "Release"
-		optimize "on"
+filter "configurations:Debug"
+        runtime "Debug"
+        symbols "on"
+   
+filter "configurations:Release"
+      runtime "Release"
+      optimize "on"
